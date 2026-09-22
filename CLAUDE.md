@@ -47,9 +47,6 @@ secure" warning. DNS is not the cause. Most likely the "Enforce HTTPS" checkbox
 under Settings → Pages, or a certificate still provisioning. Jose is
 investigating — confirm it is fixed before treating the site as launch-ready.
 
-**`launch-bg.jpg` provenance is unknown.** No embedded metadata. Confirm the
-license before launch; it anchors the home page.
-
 Secondary: the apex has no IPv6 (AAAA) records. GitHub recommends adding the
 `2606:50c0:800{0,1,2,3}::153` set. Not causing the HTTPS problem.
 
@@ -79,8 +76,10 @@ Decided 2026-09-21, inherited from the original "coming soon" splash:
   in `fonts/OFL.txt`). Used only for the wordmark, the home hero `h1`, and
   small eyebrow labels. Never for body copy or headings on content pages.
 - **Body font** — system font stack. No web font.
-- `launch-bg.jpg` is used only on the home hero. Its license/source is
-  unconfirmed — see Known issues.
+- `launch-bg.jpg` is NASA image `NHQ20260830_admin_0002` (Roman Space
+  Telescope launch, 2026-08-30, credit NASA/John Kraus), from
+  images.nasa.gov. Used only on the home hero, with the visible credit line
+  the Image policy requires. Source: https://images.nasa.gov/details/NHQ20260830_admin_0002
 - `.todo` class marks unwritten content visibly. Remove it when the copy lands.
 
 ## Image policy
