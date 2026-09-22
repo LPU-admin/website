@@ -47,6 +47,9 @@ secure" warning. DNS is not the cause. Most likely the "Enforce HTTPS" checkbox
 under Settings → Pages, or a certificate still provisioning. Jose is
 investigating — confirm it is fixed before treating the site as launch-ready.
 
+**`launch-bg.jpg` provenance is unknown.** No embedded metadata. Confirm the
+license before launch; it anchors the home page.
+
 Secondary: the apex has no IPv6 (AAAA) records. GitHub recommends adding the
 `2606:50c0:800{0,1,2,3}::153` set. Not causing the HTTPS problem.
 
@@ -63,6 +66,22 @@ Secondary: the apex has no IPv6 (AAAA) records. GitHub recommends adding the
 - Responsive down to phone width. Semantic HTML and real accessibility
   (landmarks, alt text, focus states, contrast) — some clients are
   publicly funded and may be held to accessibility standards.
+
+## Design
+
+Decided 2026-09-21, inherited from the original "coming soon" splash:
+
+- **Colors** — `--ink #fff6e0`, `--amber #ffb547`, `--ember #2a1a08` are the
+  brand; they come from `launch-bg.jpg`. Light content pages (`--bg #fffaf0`)
+  with dark header, footer, hero, and CTA bands. All tokens on `:root` in
+  `styles.css`.
+- **Display font** — Press Start 2P, self-hosted from `fonts/` (OFL, license
+  in `fonts/OFL.txt`). Used only for the wordmark, the home hero `h1`, and
+  small eyebrow labels. Never for body copy or headings on content pages.
+- **Body font** — system font stack. No web font.
+- `launch-bg.jpg` is used only on the home hero. Its license/source is
+  unconfirmed — see Known issues.
+- `.todo` class marks unwritten content visibly. Remove it when the copy lands.
 
 ## Sitemap
 
