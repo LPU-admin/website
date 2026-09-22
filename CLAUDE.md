@@ -5,7 +5,7 @@ below changes, edit this file in the same commit.
 
 ## The business
 
-Launch Pad Unlimited is a general partnership (Jose Carrillo and Dash) providing
+Launch Pad Unlimited is a general partnership (Jose Carrillo and Dash Krehel) providing
 educational and professional services to museums and informal learning
 organizations — science centers, zoos, aquariums, libraries, makerspaces.
 Home-based in Pico Rivera, CA. LLC conversion planned later, not yet done.
@@ -21,7 +21,7 @@ Home-based in Pico Rivera, CA. LLC conversion planned later, not yet done.
 7. Staffing Support
 
 **Partner split** — Jose: learning design, curriculum, AI enablement, IT and
-systems, evaluation and data. Dash: exhibit design and fabrication, makerspace
+systems, evaluation and data. Dash Krehel: exhibit design and fabrication, makerspace
 planning and buildout, makerspace curriculum and training, community
 programming, staffing support.
 
