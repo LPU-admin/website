@@ -1,0 +1,114 @@
+# Launch Pad Unlimited — Website
+
+Context for Claude Code working in this repo. Keep it current; if a decision
+below changes, edit this file in the same commit.
+
+## The business
+
+Launch Pad Unlimited is a general partnership (Jose Carrillo and Dash) providing
+educational and professional services to museums and informal learning
+organizations — science centers, zoos, aquariums, libraries, makerspaces.
+Home-based in Pico Rivera, CA. LLC conversion planned later, not yet done.
+
+**Seven service lines** (the site's core content):
+
+1. Learning Design & Curriculum Development
+2. AI Integration & Enablement
+3. IT & Systems
+4. Evaluation & Data
+5. Makerspace Planning & Buildout
+6. Community Programming
+7. Staffing Support
+
+**Partner split** — Jose: learning design, curriculum, AI enablement, IT and
+systems, evaluation and data. Dash: exhibit design and fabrication, makerspace
+planning and buildout, makerspace curriculum and training, community
+programming, staffing support.
+
+Near-term sales target is Columbia Memorial Space Center in Downey, CA — city
+owned, mid-expansion. Not public-facing site content, but it shapes tone: the
+audience is museum directors and city procurement staff, not consumers.
+
+## Hosting and repo
+
+- Repo: `LPU-admin/website` (public), owned by the business GitHub account
+- Host: GitHub Pages, serving from this repo
+- Domain: `launchpadunlimited.org`, registered and DNS-managed at Squarespace
+- DNS verified correct as of 2026-09-21 — apex resolves to GitHub Pages'
+  `185.199.108.153` / `.109.153` / `.110.153` / `.111.153`
+- Jose pushes from his personal GitHub account, added as a collaborator
+
+## Known issues
+
+**HTTPS is not enforced.** As of 2026-09-21, `https://launchpadunlimited.org/`
+returns a 302 to `http://launchpadunlimited.org/`, and
+`https://lpu-admin.github.io/website/` does the same. Visitors get a "Not
+secure" warning. DNS is not the cause. Most likely the "Enforce HTTPS" checkbox
+under Settings → Pages, or a certificate still provisioning. Jose is
+investigating — confirm it is fixed before treating the site as launch-ready.
+
+Secondary: the apex has no IPv6 (AAAA) records. GitHub recommends adding the
+`2606:50c0:800{0,1,2,3}::153` set. Not causing the HTTPS problem.
+
+## Stack decisions
+
+- **Plain HTML, CSS, and vanilla JS. No build step, no framework, no bundler.**
+  Chosen so the site runs on GitHub Pages as-is and either partner can edit a
+  page without a toolchain. Do not introduce a build step without asking.
+- Shared `styles.css` across all pages. No CSS framework.
+- No contact form. Contact is a `mailto:` link, lightly obfuscated against
+  scrapers. GitHub Pages cannot process form submissions; adding a form means
+  adding a third-party service, which is a decision, not an implementation
+  detail — ask first.
+- Responsive down to phone width. Semantic HTML and real accessibility
+  (landmarks, alt text, focus states, contrast) — some clients are
+  publicly funded and may be held to accessibility standards.
+
+## Sitemap
+
+Four pages, built so the services page can split later without a rewrite:
+
+- `index.html` — home
+- `services.html` — all seven service lines as self-contained blocks
+- `about.html` — the partnership, Jose and Dash
+- `contact.html` — mailto and service area
+
+Each service block on `services.html` should be structured so it can be lifted
+into its own page (e.g. `services/ai-enablement.html`) when a sales conversation
+calls for a linkable page. Give each one a stable `id` for deep linking.
+
+## Workflow
+
+- `main` is live. GitHub Pages publishes from it.
+- Work on `dev`. Preview locally with `python3 -m http.server` and open
+  `localhost:8000`. Merge to `main` only after Jose and Dash have reviewed.
+- Long-term host is undecided. If per-pull-request preview URLs become
+  necessary, moving to Cloudflare Pages or Netlify (GitHub stays the source of
+  truth, DNS repointed once at Squarespace) is the option on the table. Not
+  decided — do not act on it.
+
+## Do not invent
+
+This is a real business's public site. Several things are genuinely unresolved,
+and a plausible-sounding guess is worse than a placeholder:
+
+- **Positioning copy** — what Launch Pad does that a generic ed consultant
+  cannot. Not written yet.
+- **Partner bios** — Jose and Dash. Not written yet.
+- **Domain email address** — the `mailto:` target. Confirm before hardcoding.
+- **Rates and pricing** — a rate card exists internally. Whether any of it goes
+  on the public site has not been decided. Default to no.
+- **Client list, testimonials, past projects, credentials, certifications,
+  years in business** — the partnership is new. Do not write any of these.
+
+Use a visible `TODO:` placeholder for anything in this list and tell Jose what
+is missing. Never fabricate a client, a number, or a credential.
+
+## Conventions
+
+- Two-space indent in HTML and CSS
+- CSS custom properties on `:root` for colors, type, and spacing — no
+  hardcoded hex values in rules
+- Relative links between pages, so the site works from a subpath
+- No external fonts, scripts, or CDNs without asking. Self-host instead.
+- Keep total page weight small; no images over ~200KB without a reason
