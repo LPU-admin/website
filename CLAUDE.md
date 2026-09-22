@@ -83,6 +83,16 @@ Decided 2026-09-21, inherited from the original "coming soon" splash:
   unconfirmed — see Known issues.
 - `.todo` class marks unwritten content visibly. Remove it when the copy lands.
 
+## Image policy
+
+NASA imagery is usable (generally public domain), subject to:
+
+- Verify the credit line names NASA and not a third-party copyright holder.
+- Never use the NASA insignia, logotype, seal, or identifiers.
+- Avoid identifiable people.
+- Include a visible "Image credit: NASA" wherever the image appears.
+- Never place imagery so it implies NASA endorsement or affiliation.
+
 ## Sitemap
 
 Four pages, built so the services page can split later without a rewrite:
