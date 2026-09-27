@@ -44,12 +44,10 @@ audience is museum directors and city procurement staff, not consumers.
 
 ## Known issues
 
-**HTTPS is not enforced.** As of 2026-09-21, `https://launchpadunlimited.org/`
-returns a 302 to `http://launchpadunlimited.org/`, and
-`https://lpu-admin.github.io/website/` does the same. Visitors get a "Not
-secure" warning. DNS is not the cause. Most likely the "Enforce HTTPS" checkbox
-under Settings → Pages, or a certificate still provisioning. Jose is
-investigating — confirm it is fixed before treating the site as launch-ready.
+~~**HTTPS is not enforced.**~~ Fixed as of 2026-09-26: `http://` now 301s to
+`https://`, and `https://launchpadunlimited.org/` returns 200. The fix
+coincided with a delete-and-recreate of `CNAME` on `main`, which re-triggered
+certificate provisioning.
 
 Secondary: the apex has no IPv6 (AAAA) records. GitHub recommends adding the
 `2606:50c0:800{0,1,2,3}::153` set. Not causing the HTTPS problem.
@@ -117,9 +115,10 @@ calls for a linkable page. Give each one a stable `id` for deep linking.
 - **Preview site:** `LPU-admin/websitepreview` publishes
   `https://lpu-admin.github.io/websitepreview/` from its `main`. Local branch
   `preview` = `dev` minus `CNAME` (the preview must never claim the
-  production domain), with remote `preview` pointing at that repo. To refresh
-  it: `git checkout preview && git merge dev && git push`. Never push `CNAME`
-  there.
+  production domain), with remote `previewrepo` pointing at that repo. To
+  refresh it: `git checkout preview && git merge dev && git push`. Never push
+  `CNAME` there. In GitHub Desktop the repo is always shown as "website" (one
+  local folder, two remotes) — the *branch* decides where a push lands.
 - Long-term host is undecided. If per-pull-request preview URLs become
   necessary, moving to Cloudflare Pages or Netlify (GitHub stays the source of
   truth, DNS repointed once at Squarespace) is the option on the table. Not
