@@ -13,16 +13,22 @@ names Pico Rivera.** The service area is "Southern California," narrowing to
 "the Los Angeles area" only where a specific location is needed.
 LLC conversion planned later, not yet done.
 
-**Seven service lines** (the site's core content), in the order they appear on
-the site — AI and makerspace buildout lead, then partners alternate:
+**Eight service lines** (the site's core content), in the order they appear on
+the site — AI leads, then Dash's two build services, then the rest:
 
 1. AI Integration & Enablement
-2. Makerspace Planning & Buildout
-3. Learning Design & Curriculum Development
-4. Community Programming
-5. IT & Systems
-6. Evaluation & Data
-7. Staffing Support
+2. Exhibit Design & Fabrication
+3. Makerspace Planning & Buildout
+4. Learning Design & Curriculum Development
+5. Community Programming
+6. IT & Systems
+7. Evaluation & Data
+8. Staffing Support
+
+Exhibit Design & Fabrication was added 2026-09-26. It had been a partner-split
+skill only, but the positioning copy leads with "we build exhibits," so it
+needed a service block to link to. Its scope has not been confirmed with
+Dash — see Do not invent.
 
 **Partner split** — Jose: learning design, curriculum, AI enablement, IT and
 systems, evaluation and data. Dash Krehel: exhibit design and fabrication, makerspace
@@ -132,6 +138,10 @@ and a plausible-sounding guess is worse than a placeholder:
 - ~~**Positioning copy**~~ — written 2026-09-26. Short form on the home hero,
   long form on the about page. Do not reword without asking.
 - **Partner bios** — Jose's is written. **Dash Krehel's is still not written.**
+- **Exhibit fabrication scope** — the `#exhibits` block describes categories of
+  work, not shop capabilities. Dash has not confirmed what the partnership can
+  actually fabricate (materials, interactives, scale). Confirm before a client
+  reads it.
 - ~~**Domain email address**~~ — `info@launchpadunlimited.org`, confirmed
   2026-09-26. Assembled at runtime in `main.js`; never hardcode it in HTML.
 - **Rates and pricing** — a rate card exists internally. Whether any of it goes
