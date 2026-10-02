@@ -1,0 +1,587 @@
+/* Launch Pad Unlimited — shared stylesheet
+   Tokens live on :root. Do not hardcode colors in rules. */
+
+@font-face {
+  font-family: "Press Start 2P";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/press-start-2p-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* Brand — inherited from the launch splash */
+  --ink: #fff6e0;
+  --amber: #ffb547;
+  --ember: #2a1a08;
+
+  /* Surfaces */
+  --bg: #fffaf0;
+  --surface: #fff3dc;
+  --bg-dark: #3a2810;
+  --border: #e6d3b3;
+  --haze: rgba(42, 26, 8, 0.72);
+
+  /* Text on light surfaces */
+  --text: #2a1a08;
+  --text-muted: #6b5238;
+  --link: #9a5a00;
+  --link-hover: #7a4700;
+  --focus: #9a5a00;
+
+  /* Type */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --font-display: "Press Start 2P", "Courier New", monospace;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-2xl: 2rem;
+  --fs-3xl: clamp(2rem, 4vw, 3rem);
+  --lh-body: 1.6;
+  --lh-tight: 1.2;
+
+  /* Spacing — 8px scale */
+  --sp-1: 0.5rem;
+  --sp-2: 1rem;
+  --sp-3: 1.5rem;
+  --sp-4: 2rem;
+  --sp-6: 3rem;
+  --sp-8: 4rem;
+
+  --measure: 65ch;
+  --container: 72rem;
+  --radius: 4px;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  color: var(--text);
+  background: var(--bg);
+}
+
+h1,
+h2,
+h3 {
+  line-height: var(--lh-tight);
+  margin: 0 0 var(--sp-2);
+}
+
+h1 {
+  font-size: var(--fs-3xl);
+}
+
+h2 {
+  font-size: var(--fs-2xl);
+}
+
+h3 {
+  font-size: var(--fs-lg);
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 var(--sp-2);
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Layout helpers ---------- */
+
+.container {
+  width: min(100% - 2 * var(--sp-3), var(--container));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--sp-6);
+}
+
+.section--alt {
+  background: var(--surface);
+}
+
+.section--dark {
+  background: var(--bg-dark);
+  color: var(--ink);
+}
+
+.section--dark a {
+  color: var(--amber);
+}
+
+.section--dark a:hover {
+  color: var(--ink);
+}
+
+.section--dark :focus-visible {
+  outline-color: var(--amber);
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: var(--link);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--sp-2);
+}
+
+.section--dark .eyebrow {
+  color: var(--amber);
+}
+
+.lede {
+  font-size: var(--fs-lg);
+  color: var(--text-muted);
+}
+
+.section--dark .lede {
+  color: var(--ink);
+}
+
+/* Visible placeholder for content that has not been written yet.
+   Remove the class and the marker when the real copy lands. */
+.todo {
+  display: inline-block;
+  border: 2px dashed var(--link);
+  background: var(--surface);
+  padding: var(--sp-2);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  max-width: var(--measure);
+}
+
+.todo::before {
+  content: "TODO";
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  color: var(--link);
+  margin-right: var(--sp-1);
+}
+
+.section--dark .todo,
+.hero .todo {
+  background: var(--haze);
+  color: var(--ink);
+  border-color: var(--amber);
+}
+
+.section--dark .todo::before,
+.hero .todo::before {
+  color: var(--amber);
+}
+
+/* ---------- Skip link ---------- */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--sp-2);
+  background: var(--amber);
+  color: var(--ember);
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: 0 0 var(--radius) var(--radius);
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ---------- Header / nav ---------- */
+
+.site-header {
+  background: var(--ember);
+  color: var(--ink);
+  border-bottom: 4px solid var(--amber);
+}
+
+.site-header .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2) var(--sp-4);
+  padding-block: var(--sp-2);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--bg-dark);
+}
+
+.wordmark:hover {
+  color: var(--amber);
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-3);
+  max-width: none;
+}
+
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  padding-block: var(--sp-1);
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover {
+  color: var(--amber);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--amber);
+  border-bottom-color: var(--amber);
+}
+
+.site-header :focus-visible {
+  outline-color: var(--amber);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  color: var(--ink);
+  background: var(--bg-dark) url("launch-bg.jpg") center / cover no-repeat;
+  padding-block: var(--sp-8);
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--haze) 0%,
+    var(--haze) 55%,
+    transparent 100%
+  );
+}
+
+.hero .container {
+  position: relative;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3.5vw, 2.4rem);
+  line-height: 1.5;
+  font-weight: 400;
+  text-shadow: 4px 4px 0 var(--ember);
+  max-width: 24ch;
+}
+
+.hero .lede {
+  max-width: var(--measure);
+  color: var(--ink);
+  text-shadow: 1px 1px 0 var(--ember);
+}
+
+/* Required by the image policy in CLAUDE.md — keep visible */
+.hero__credit {
+  position: absolute;
+  right: var(--sp-2);
+  bottom: var(--sp-1);
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--ink);
+  text-shadow: 1px 1px 0 var(--ember);
+}
+
+/* Non-home pages get a plain dark band instead of the photo */
+.page-title {
+  background: var(--bg-dark);
+  color: var(--ink);
+  padding-block: var(--sp-6);
+  border-bottom: 4px solid var(--amber);
+}
+
+.page-title h1 {
+  margin-bottom: var(--sp-1);
+}
+
+.page-title .lede {
+  color: var(--ink);
+  margin-bottom: 0;
+}
+
+/* ---------- Buttons ---------- */
+
+.button {
+  display: inline-block;
+  background: var(--amber);
+  color: var(--ember);
+  font-weight: 600;
+  text-decoration: none;
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--radius);
+  border: 2px solid var(--amber);
+}
+
+.button:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--ember);
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--amber);
+}
+
+/* .section--dark a would otherwise win on specificity */
+.section--dark .button,
+.hero .button {
+  color: var(--ember);
+}
+
+.section--dark .button--ghost,
+.hero .button--ghost {
+  color: var(--amber);
+}
+
+.section--dark .button--ghost:hover,
+.hero .button--ghost:hover {
+  color: var(--ember);
+}
+
+/* ---------- Cards / grids ---------- */
+
+.grid {
+  display: grid;
+  gap: var(--sp-3);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--sp-3);
+}
+
+.card h3 {
+  margin-bottom: var(--sp-1);
+}
+
+.card p {
+  margin-bottom: 0;
+}
+
+.card a {
+  font-weight: 600;
+}
+
+/* ---------- Service blocks (services.html) ----------
+   Each block is self-contained so it can be lifted into its own page. */
+
+.service {
+  padding-block: var(--sp-6);
+  border-top: 1px solid var(--border);
+  scroll-margin-top: var(--sp-4);
+}
+
+.service:first-of-type {
+  border-top: 0;
+}
+
+.service__inner {
+  display: grid;
+  gap: var(--sp-4);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+}
+
+@media (max-width: 48rem) {
+  .service__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service__meta {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--sp-3);
+  font-size: var(--fs-sm);
+  align-self: start;
+}
+
+.service__meta dt {
+  font-weight: 600;
+  margin-top: var(--sp-2);
+}
+
+.service__meta dt:first-child {
+  margin-top: 0;
+}
+
+.service__meta dd {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.service ul {
+  padding-left: 1.2em;
+}
+
+.service li {
+  margin-bottom: var(--sp-1);
+}
+
+.jump-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-2);
+  max-width: none;
+}
+
+.jump-list a {
+  display: inline-block;
+  padding: var(--sp-1) var(--sp-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+}
+
+.jump-list a:hover {
+  border-color: var(--link);
+}
+
+/* ---------- Partner blocks (about.html) ---------- */
+
+.partner {
+  padding-block: var(--sp-4);
+  border-top: 1px solid var(--border);
+}
+
+.partner h2 {
+  margin-bottom: var(--sp-1);
+}
+
+.partner__role {
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+}
+
+.partner ul {
+  padding-left: 1.2em;
+}
+
+/* ---------- Definition lists (contact.html) ---------- */
+
+.details {
+  max-width: var(--measure);
+}
+
+.details dt {
+  font-weight: 600;
+  margin-top: var(--sp-3);
+}
+
+.details dt:first-child {
+  margin-top: 0;
+}
+
+.details dd {
+  margin: 0;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: var(--ember);
+  color: var(--ink);
+  padding-block: var(--sp-4);
+  font-size: var(--fs-sm);
+  margin-top: var(--sp-8);
+}
+
+.site-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--sp-2) var(--sp-4);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a {
+  color: var(--amber);
+}
+
+.site-footer a:hover {
+  color: var(--ink);
+}
+
+.site-footer :focus-visible {
+  outline-color: var(--amber);
+}
+
+.site-footer .wordmark {
+  font-size: 0.65rem;
+}
